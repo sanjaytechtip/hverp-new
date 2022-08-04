@@ -220,7 +220,6 @@ label.error{color:#FF0000;}
                     </tr>
                   </thead>
                   <tbody id="results">
-                  
                   @php
                   $i = 1;
                   @endphp
