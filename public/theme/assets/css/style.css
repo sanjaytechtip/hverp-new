@@ -1244,5 +1244,5 @@ label.error{ font-size:11px; }
 .modal .new-scroll-table .table-bordered thead th{ top:0; position:sticky; z-index:99; border-top:0; }
 
 .big-table table.quotationcreate-table td input.error,
-select.error, input.error, textarea.error{ border-color:red !important; }
+select.error, input.error, textarea.error{ border-color:red !important;  }
 .big-table table.quotationcreate-table td label.error{ display:none !important; }
