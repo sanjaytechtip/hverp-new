@@ -1,0 +1,3 @@
+company_name,contact_person,location,address,state,city,contact_no,email_id,pan_no,gst,bank_name,account_no,ifsc_code,branch_name,payment_terms
+Dhruv,Dhruv,Local,RZ-B-68,Delhi,West Delhi,8459443557,dhruvjha28@gmail.com,ASDFR123456,AS123456,Bank Of Baroda,123000000000,BARB0DCJANA,Delhi,0_days
+ABC,Dhruv1,Import,RZ-A-67,Delhi1,West Delhi,8459443557,dhruvjha28@gmail.com,ASDFR123456,AS123456,Bank Of Baroda,123000000000,BARB0DCJANA,Delhi,30_days

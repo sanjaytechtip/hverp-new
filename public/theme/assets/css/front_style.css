@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document ======*/
+#app > .navbar{ display:none; }
+main .navbar{ margin-bottom:20px; padding:15px; } 
+main .navbar .logo-box{ margin:0 auto; font-size:25px; font-weight:bold; text-shadow: 1px 1px 1px rgba(0,0,0,.6); text-transform:uppercase; }
+.card-body.card-body-nopadding{ padding-left:0; padding-right:0; }
+.form-group + .card-header{ border-top:1px solid rgba(0,0,0,.125); margin-top:40px; margin-bottom:20px; text-align:center; }
+.py-4{ padding-top:0 !important; }
+.invalid-feedback{}
+.card-header.big-heading{ font-size:18px; font-weight:bold; text-align:center; text-transform:uppercase; background-color:rgba(0,0,0,1); color:#fff; }
+input[type="file"].form-control{line-height:1.2;}
+span.required,
+label.required{ color:#e3342f !important; }
+@media(max-width:992px){
+.form-group.row{ margin-left:0; margin-right:0; }
+}

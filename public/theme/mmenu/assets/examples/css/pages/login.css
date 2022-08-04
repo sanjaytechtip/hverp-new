@@ -1,0 +1,20 @@
+.page-login:before { background-image: url("../../images/login.jpg"); }
+.page-login form { width: 340px; margin: 30px 0; }
+.page-login form a { margin-left: 20px; }
+.page-login .form-control,
+.page-login .floating-label,
+.page-login .form-control:focus + .floating-label { color: #bdbdbd; }
+.page-login a { color: #9fa8da; }
+@media (max-width: 767.98px){
+.page-login form { width: auto; }
+}
+.menu_box{ position:absolute; top:20px; right:20px; z-index:999; }
+.menu_box .menu_option{ display:block; list-style:none; margin:0; padding:0; }
+.menu_box .menu_option li{ display:inline-block; margin:0 5px; padding:0 5px; position:relative; }
+.menu_box .menu_option li:after{ content:"|"; position: absolute; top: 0; right: -8px; }
+.menu_box .menu_option li:last-child:after{ display:none; }
+.menu_box .menu_option li a{ display:block; color:#fff; }
+.menu_box .menu_option li a:hover{ text-decoration:underline; }
+@media (max-width: 767px){
+.menu_box{ left:10px; right:10px; text-align:center; top:10px; }
+}

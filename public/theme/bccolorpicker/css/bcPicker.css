@@ -1,0 +1,29 @@
+.bcPicker-picker{
+  width: 20px;
+  height: 20px;
+  position:  relative;
+  cursor: pointer;
+}
+
+.bcPicker-palette{
+  width: 120px;
+  position: absolute;
+  top: 22px;
+  padding: 5px;
+  border: 1px solid #efefef;
+  background-color: #fdfdfd;
+  z-index: 10;
+  display: none;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+.bcPicker-palette > .bcPicker-color{
+  width: 14px;
+  height: 14px;
+  margin: 2px;
+  display: inline-block;
+  border: 1px solid #efefef;
+}
+.color_main_div{ display:block; padding:5px 0 0; }
+.color_main_div > div{ float:left; margin:0; }
+.color_main_div > input{width: 65px; padding: 1px 4px; line-height: normal; border: #e0e0e0 1px solid; }

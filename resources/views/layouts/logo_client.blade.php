@@ -1,0 +1,1 @@
+<img class="site-logo" src="{{asset(PUBLIC_FOLDER.'theme')}}/assets/images/antya.png">
