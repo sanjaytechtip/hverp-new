@@ -215,7 +215,6 @@ label.error{color:#FF0000;}
     <label>Status</label>
     <select name="purchaseorder_status" id="purchaseorder_status" required class="form-control">
       <option @if($purchaseorder_details['purchaseorder_status']=='Saved') selected @endif value="Saved">Saved</option>
-      <option @if($purchaseorder_details['purchaseorder_status']=='Pending Approval') selected @endif value="Pending Approval">Pending Approval</option>
       <option @if($purchaseorder_details['purchaseorder_status']=='Approved') selected @endif value="Approved">Approved</option>
       <option @if($purchaseorder_details['purchaseorder_status']=='Completed') selected @endif value="Completed">Completed</option>
     </select>
@@ -300,13 +299,13 @@ label.error{color:#FF0000;}
                             <input type="text" readonly value="{{$item_details['mrp']}}" name="row[{{$i}}][mrp]" cus="{{$i}}" class="autocomplete-dynamic form-control mrp" id="mrp_rel_{{$i}}" /> 
                             </td>
                              <td data-text="Dis %">
-                              <input type="number" value="{{$item_details['discount_per']}}" name="row[{{$i}}][discount_per]" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" />
+                              <input type="number" min="0" value="{{$item_details['discount_per']}}" name="row[{{$i}}][discount_per]" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" />
                           </td>
                           <td data-text="Discount">
                               <input type="number" readonly value="{{$item_details['discount']}}" name="row[{{$i}}][discount]" class="autocomplete-dynamic form-control" id="discount_rel_{{$i}}" />
                           </td>
                           <td data-text="Quantity">
-                              <input type="number" value="{{$item_details['quantity']}}" name="row[{{$i}}][quantity]" cus="{{$i}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" />
+                              <input type="number" required min="1" value="{{$item_details['quantity']}}" name="row[{{$i}}][quantity]" cus="{{$i}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" />
                               </td>
                               <td data-text="Adv Amount (%)">
                               <input type="number" value="{{$item_details['adv_amount']}}" name="row[{{$i}}][adv_amount]" cus="{{$i}}" class="autocomplete-dynamic adv_amount form-control" id="adv_amount_rel_{{$i}}" />
