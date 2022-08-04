@@ -1219,6 +1219,26 @@ label.error{ font-size:11px; }
 .mrn-custom-popup-form .form-control{ text-align:left; text-align-last:left; -moz-text-align-last:left; }
 
 @media (max-width:768px) {
-.purchaseorder-box .table-wrap.scrollfix-wrap .responsive-table table th,
+.purchaseorder-box .table-wrap.scrollfix-wrap .responsive-table table th{ left:auto; }
 .purchaseorder-box .table-wrap.scrollfix-wrap .responsive-table table td{ position:static; }    
 }
+
+.search-data-items .table tbody td.item-edit{ white-space:nowrap; }
+
+
+
+/*.page-header-actions .w-400{ width:auto !important; }
+.page-header-actions .w-400 .col-sm-6{ max-width:100%; flex:0 0 100%; }
+.page-header-actions .w-400 .counter >*{ white-space:nowrap; }
+@media (max-width:767px) {
+.page-header-actions .w-400 .counter{ text-align:left; display: flex; align-items: center; }
+.page-header-actions .w-400 .counter .counter-label{ margin-left:6px; }
+}*/
+
+
+.page-header-actions .no-space.w-400{ align-items: center; }
+.custom-page-heading .w-400 > div .counter{ padding-left:10px; padding-right:10px; }
+
+.modal .new-scroll-table{ max-height:260px; }
+.modal .new-scroll-table .table-bordered{ border-top:0 none; }
+.modal .new-scroll-table .table-bordered thead th{ top:0; position:sticky; z-index:99; border-top:0; }

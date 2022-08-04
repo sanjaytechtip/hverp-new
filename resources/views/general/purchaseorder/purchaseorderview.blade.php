@@ -242,9 +242,9 @@ label.error{color:#FF0000;}
                     <td data-text="Dis %"><input type="number" readonly value="{{$item_details['discount_per']}}" name="row[{{$i}}][discount_per]" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" /></td>
                     <td data-text="Discount"><input type="number" readonly value="{{$item_details['discount']}}" name="row[{{$i}}][discount]" class="autocomplete-dynamic form-control" id="discount_rel_{{$i}}" /></td>
                     <td data-text="Quantity"><input type="number" readonly value="{{$item_details['quantity']}}" name="row[{{$i}}][quantity]" cus="{{$i}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" /></td>
-                    <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{$item_details['net_rate']}}</td>
-                    <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{$item_details['tax_amount']}}</td>
-                    <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{$item_details['amount']}}</td>
+                    <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{number_format($item_details['net_rate'],2,'.','')}}</td>
+                    <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{number_format($item_details['tax_amount'],2,'.','')}}</td>
+                    <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{number_format($item_details['amount'],2,'.','')}}</td>
                     <td data-text="Remaining Qty" align="center">{{$item_details['quantity']-$item_details['inward_qty']}}</td>
                   </tr>
                   @php

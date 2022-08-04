@@ -270,12 +270,12 @@ label.error{color:#FF0000;}
                     <td data-text="Tax" class="task_left_fix tax-fix-width"><input type="text" name="row[{{$i}}][tax_rate]" value="{{$details['tax_rate']}}" cus="{{$i}}" class="autocomplete-dynamic tax_rate form-control" id="tax_rate_rel_{{$i}}" required /></td>
                     <td data-text="Rate"><input type="text" name="row[{{$i}}][rate]" value="{{$details['rate']}}" cus="{{$i}}" class="autocomplete-dynamic item-rate form-control" id="rate_rel_{{$i}}" /></td>
                     <td data-text="MRP"><input type="text" readonly name="row[{{$i}}][mrp]" value="{{$details['mrp']}}" cus="{{$i}}" class="autocomplete-dynamic form-control mrp" id="mrp_rel_{{$i}}" /></td>
-                    <td data-text="Dis %"><input type="number" name="row[{{$i}}][discount_per]" value="{{$details['discount_per']}}" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" /></td>
+                    <td data-text="Dis %"><input type="number" min="0" name="row[{{$i}}][discount_per]" value="{{$details['discount_per']}}" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" /></td>
                     <td data-text="Discount"><input type="number" readonly name="row[{{$i}}][discount]" value="{{$details['discount']}}" class="autocomplete-dynamic form-control" id="discount_rel_{{$i}}" /></td>
-                    <td data-text="Quantity"><input type="number" name="row[{{$i}}][quantity]" cus="{{$i}}" value="{{$details['quantity']}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" /></td>
-                    <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{$details['net_rate']}}</td>
-                    <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{$details['tax_amount']}}</td>
-                    <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{$details['amount']}}</td>
+                    <td data-text="Quantity"><input type="number" min="1" required name="row[{{$i}}][quantity]" cus="{{$i}}" value="{{$details['quantity']}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" /></td>
+                    <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{number_format($details['net_rate'],2,'.','')}}</td>
+                    <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{number_format($details['tax_amount'],2,'.','')}}</td>
+                    <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{number_format($details['amount'],2,'.','')}}</td>
                     <input type="hidden" class="form-control width-full amount_hidden" value="{{$details['net_rate']}}" rel="netrate" id="tmp_id_net_rate_{{$i}}" name="row[{{$i}}][net_rate]" />
                     <input type="hidden" class="form-control width-full amount_hidden" value="{{$details['tax_amount']}}" rel="taxamount" id="tmp_id_tax_amount_{{$i}}" name="row[{{$i}}][tax_amount]" />
                     <input type="hidden" class="form-control width-full amount_hidden" value="{{$details['amount']}}" rel="amount" id="tmp_id_amount_{{$i}}" name="row[{{$i}}][amount]" />

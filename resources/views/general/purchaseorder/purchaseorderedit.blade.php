@@ -310,9 +310,9 @@ label.error{color:#FF0000;}
                               <td data-text="Adv Amount (%)">
                               <input type="number" value="{{$item_details['adv_amount']}}" name="row[{{$i}}][adv_amount]" cus="{{$i}}" class="autocomplete-dynamic adv_amount form-control" id="adv_amount_rel_{{$i}}" />
                               </td>
-                              <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{$item_details['net_rate']}}</td>
-                              <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{$item_details['tax_amount']}}</td>
-                          <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{$item_details['amount']}}</td>
+                              <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{number_format($item_details['net_rate'],2,'.','')}}</td>
+                              <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{number_format($item_details['tax_amount'],2,'.','')}}</td>
+                          <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{number_format($item_details['amount'],2,'.','')}}</td>
                           <input type="hidden" class="form-control width-full amount_hidden" rel="netrate" id="tmp_id_net_rate_{{$i}}" value="{{$item_details['net_rate']}}" name="row[{{$i}}][net_rate]" />
                           <input type="hidden" class="form-control width-full amount_hidden" rel="taxamount" id="tmp_id_tax_amount_{{$i}}" value="{{$item_details['tax_amount']}}" name="row[{{$i}}][tax_amount]" />
                           <input type="hidden" class="form-control width-full amount_hidden" rel="amount" id="tmp_id_amount_{{$i}}" value="{{$item_details['amount']}}" name="row[{{$i}}][amount]" />
