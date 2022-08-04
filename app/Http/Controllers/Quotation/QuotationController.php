@@ -275,6 +275,7 @@ class QuotationController extends Controller
                             
                         );
             $last_id = DB::table('tbl_quotation')->where('id',$id)->update($arr);
+            DB::table('tbl_quotation_item')->where('quotation_id',$id)->delete();
             if(!empty($request->row)){
                 foreach($request->row as $rows)
                 {
@@ -305,7 +306,7 @@ class QuotationController extends Controller
                     'quotation_id'  =>$id
                     );
                     //pr($data); die;
-            DB::table('tbl_quotation_item')->where('id',$rows['item_data_id'])->update($data);
+                    DB::table('tbl_quotation_item')->insertGetId($data);
             }			
             }
 			
@@ -520,13 +521,13 @@ class QuotationController extends Controller
                             <input type="text" readonly name="row['.$i.'][mrp]" cus="'.$i.'" value="'.$itemlist['mrp'].'" class="autocomplete-dynamic form-control mrp" id="mrp_rel_'.$i.'" /> 
                             </td>
                              <td data-text="Dis %">
-                              <input type="number" name="row['.$i.'][discount_per]" cus="'.$i.'" value="'.$discount_data.'" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_'.$i.'" />
+                              <input type="number" min="0" name="row['.$i.'][discount_per]" cus="'.$i.'" value="'.$discount_data.'" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_'.$i.'" />
                           </td>
                           <td data-text="Discount">
                               <input type="number" readonly name="row['.$i.'][discount]" value="'.$total_disc.'" class="autocomplete-dynamic form-control" id="discount_rel_'.$i.'" />
                           </td>
                           <td data-text="Quantity">
-                              <input type="number" name="row['.$i.'][quantity]" cus="'.$i.'" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_'.$i.'" />
+                              <input type="number" min="1" required name="row['.$i.'][quantity]" cus="'.$i.'" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_'.$i.'" />
                               </td>
                               <td data-text="Net Rate" id="data-row-net-rate-'.$i.'" class="netrate" style="font-weight:bold;" align="right"></td>
                               <td data-text="Tax Amount" id="data-row-tax-amount-'.$i.'" class="taxamount" style="font-weight:bold;" align="right"></td>

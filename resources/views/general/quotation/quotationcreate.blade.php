@@ -208,7 +208,6 @@ label.error{color:#FF0000;}
                         <label>Status</label>
                         <select name="quotation_status" id="quotation_status" required class="form-control">
                           <option value="Saved">Saved</option>
-                          <option value="Pending Approval">Pending Approval</option>
                           <option value="Approved">Approved</option>
                         </select>
                       </div>
@@ -801,7 +800,12 @@ $(document).ready(function() {
   var stval = parseFloat($(this).html());
   grand_total_amount += isNaN(stval) ? 0 : stval;
   });
-  alert(grand_total_amount); return false;
+  if(grand_total_amount>0){
+    return true;
+  }else{
+    alert("Quotation amount cann't be zero.");
+    return false;
+  }
   }
 </script>
 <script>

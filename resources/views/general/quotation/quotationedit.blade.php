@@ -127,7 +127,7 @@ label.error{color:#FF0000;}
       <br />
       @endif
       <div class="col-md-12">
-        <form class="" action="{{ url('admin/quotation-edit/'.$quotation_details['id']) }}" id='invoiceform' method="post" autocomplete="on" onsubmit="return validate();">
+        <form class="" action="{{ url('admin/quotation-edit/'.$quotation_details['id']) }}" id='invoiceform' method="post" autocomplete="on" onsubmit="return validateAmount();">
           @csrf
           <div class="card">
           <div class="card-body">
@@ -201,7 +201,6 @@ label.error{color:#FF0000;}
                     <label>Status</label>
                     <select name="quotation_status" id="quotation_status" required class="form-control">
                       <option @if($quotation_details['quotation_status']=='Saved') selected @endif value="Saved">Saved</option>
-                      <option @if($quotation_details['quotation_status']=='Pending Approval') selected @endif value="Pending Approval">Pending Approval</option>
                       <option @if($quotation_details['quotation_status']=='Approved') selected @endif value="Approved">Approved</option>
                     </select>
                   </div>
@@ -264,9 +263,9 @@ label.error{color:#FF0000;}
                     <td data-text="Rate"><input type="text" value="{{$item_details['rate']}}" name="row[{{$i}}][rate]" cus="{{$i}}" class="autocomplete-dynamic item-rate form-control" id="rate_rel_{{$i}}" /></td>
                     <td data-text="Stock"><input type="text" value="{{$item_details['stock']}}" readonly name="row[{{$i}}][stock]" class="autocomplete-dynamic form-control" id="stock_rel_{{$i}}" /></td>
                     <td data-text="MRP"><input type="text" readonly value="{{$item_details['mrp']}}" name="row[{{$i}}][mrp]" cus="{{$i}}" class="autocomplete-dynamic form-control mrp" id="mrp_rel_{{$i}}" /></td>
-                    <td data-text="Dis %"><input type="number" value="{{$item_details['discount_per']}}" name="row[{{$i}}][discount_per]" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" /></td>
+                    <td data-text="Dis %"><input type="number" min="0" value="{{$item_details['discount_per']}}" name="row[{{$i}}][discount_per]" cus="{{$i}}" class="autocomplete-dynamic item-disc form-control" id="discount_per_rel_{{$i}}" /></td>
                     <td data-text="Discount"><input type="number" readonly value="{{$item_details['discount']}}" name="row[{{$i}}][discount]" class="autocomplete-dynamic form-control" id="discount_rel_{{$i}}" /></td>
-                    <td data-text="Quantity"><input type="number" value="{{$item_details['quantity']}}" name="row[{{$i}}][quantity]" cus="{{$i}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" /></td>
+                    <td data-text="Quantity"><input type="number" required min="1" value="{{$item_details['quantity']}}" name="row[{{$i}}][quantity]" cus="{{$i}}" class="autocomplete-dynamic ss-qty form-control" id="quantity_rel_{{$i}}" /></td>
                     <td data-text="Net Rate" id="data-row-net-rate-{{ $i }}" class="netrate" style="font-weight:bold;" align="right">{{$item_details['net_rate']}}</td>
                     <td data-text="Tax Amount" id="data-row-tax-amount-{{ $i }}" class="taxamount" style="font-weight:bold;" align="right">{{$item_details['tax_amount']}}</td>
                     <td data-text="Amount" id="data-row-amount-{{ $i }}" class="amount" style="font-weight:bold;" align="right">{{$item_details['amount']}}</td>
@@ -482,7 +481,7 @@ label.error{color:#FF0000;}
             $user = (array)$user;
             @endphp
             <tr>
-              <td style="text-align:center;" class="white-space-normal"><input id="{{$user['id']}}" value="{{$user['vendor_sku']}}-{{$user['name']}}-{{$user['hsn_code']}}-{{$user['grade']}}-{{$user['brand']}}-{{$user['packing_name']}}-{{$user['list_price']}}-{{$user['mrp']}}-{{$user['net_rate']}}-{{$user['stock']}}" name="apply-radio" type="checkbox"></td>
+              <td style="text-align:center;" class="white-space-normal"><input id="{{$user['id']}}" validate="{{getItemNameData($user['id'])}}" value="{{$user['vendor_sku']}}-{{$user['name']}}-{{$user['hsn_code']}}-{{$user['grade']}}-{{$user['brand']}}-{{$user['packing_name']}}-{{$user['list_price']}}-{{$user['mrp']}}-{{$user['net_rate']}}-{{$user['stock']}}" name="apply-radio" type="checkbox">&nbsp;<a target="_blank" href="{{url('admin/editdata/items/'.$user['id'].'/35/')}}"><i class="icon md-edit" aria-hidden="true"></i></a></td>
               <td style="text-align:center;" class="white-space-normal">{{$user['vendor_sku']}}</td>
               <td style="text-align:center;" class="white-space-normal">{{$user['name']}}</td>
               <td style="text-align:center;" class="white-space-normal">{{$user['hsn_code']}}</td>
@@ -666,6 +665,7 @@ label.error{color:#FF0000;}
     $('#data-row-'+row).remove();
 		calculateAllUnits(row);
 	//}
+
   }
   </script> 
 <script>
@@ -1506,4 +1506,32 @@ $('#quotation_ref_no').keypress(function (e) {
        }); 
     });
 </script> 
+<script>
+  $(document).on("change","input[name='apply-radio']",function() {
+  if ($(this).is(":checked")) {
+    var verify = $(this).attr('validate');
+    if(verify!=''){
+      alert('Please fill up the below fields of item, then you can use.\n'+verify);
+      $(this).prop('checked',false);
+      return false;
+    }
+  }
+});
+</script>
+<script>
+  function validateAmount()
+  {
+  var grand_total_amount = 0;
+  $(".amount").each(function () {
+  var stval = parseFloat($(this).html());
+  grand_total_amount += isNaN(stval) ? 0 : stval;
+  });
+  if(grand_total_amount>0){
+    return true;
+  }else{
+    alert("Quotation amount cann't be zero.");
+    return false;
+  }
+  }
+</script>
 @endsection 
